@@ -1,0 +1,56 @@
+Password Manager Notes
+----------------------
+
+All file input operatons such as get() read the current character and THEN move 
+to the next position in the file.
+
+
+Encryption and Decryption
+--------------------------
+(ByteArray is vector<unsigned char>)
+
+- GetLoginData() decrypts the data file and then reads the plain-text/decrypted data from that same data file.
+	SaveLoginData() writes plain-text data to the data file and the encrypts the data file.
+
+- Decryption works by reading the contents of the data file into an array/ByteArray/string, 
+	decrypting the that array, storing the ecrypted data in another aray, and then writing
+	the decrypted/plain-text data back into the data file.
+	The process is the same for encryption.
+
+- Calling EncryptDataFile() or DecryptDataFile() while the data file is open in another stream 
+	such as in GetLoginData() will result in no data beaing encrypted/decrypted. GetLoginData() and 
+	SaveLoginData() first close their own streams to the data file before calling Encrypt and Decrypt.
+
+
+MasterPassword
+-------------------
+- The sha256 hash is used to hash the password. It produces a 64 character output wich is put at the begining of the data file.
+
+- EncryptDataFile() and DecryptDataFile() and GetLoginData() skip over the first 64 characters so they do not touch 
+	the hash of the master password. If the data file is less than 64 characters then methods such EncryptDataFile(), 
+	DecryptDataFile() and GetLoginData() will not work and will return early.
+
+- Since SaveLoginData() completely deletes/truncs the existing data file before writng to it so it first 
+	reads the master password from the data file and stores it in a string. Then it writes the master password to the 
+	new data file along with the other data.
+
+- If no data file exists when SaveLoginData() is called. Then a data file will be created with no master password
+	and any attempts by the Password Manager will fail and may result in a crash/error. This should only really happen if the file is manauly deleted. 
+	SetInitialPassword(char* newMasterPassword) is called during program startup and will create a new data file with a new master password.
+	This should assure that SaveLoginData() is not called without a data file already existing.
+
+
+Button Window Procedures
+------------------------
+- The procedure/proc of a window/button can be changed with "SetWindowLong(handleToWindow, GWL_WNDPROC, (LONG)TheNewProcedure);"
+	This function returns the old procedure of the window/button.
+
+- The old window/button procedure should be stored as a WNDPROC to be used later. The old procedure should be called inside the new procedure after
+	the new procedure is done doing its thing.
+	
+	(The new procedure you assign to the button will most likely not cover the full range of events that a button encounters such as
+	change color when clicked etc.. Thus, you should call the old procedure after the new one does its thing so the old one can handle the events
+	the new one does not)
+	
+	return CallWindowProc(originalButtonProc, handle, message, paramW, paramL);
+
