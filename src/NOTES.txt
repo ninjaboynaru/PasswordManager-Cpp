@@ -7,13 +7,11 @@ to the next position in the file.
 
 Encryption and Decryption
 --------------------------
-(ByteArray is vector<unsigned char>)
-
 - GetLoginData() decrypts the data file and then reads the plain-text/decrypted data from that same data file.
-	SaveLoginData() writes plain-text data to the data file and the encrypts the data file.
+	SaveLoginData() writes plain-text data to the data file and then encrypts the data file.
 
-- Decryption works by reading the contents of the data file into an array/ByteArray/string, 
-	decrypting the that array, storing the ecrypted data in another aray, and then writing
+- Decryption works by reading the contents of the data file into a string, 
+	decrypting the that string, storing the ecrypted data in another string, and then writing
 	the decrypted/plain-text data back into the data file.
 	The process is the same for encryption.
 
