@@ -1,5 +1,7 @@
 # PasswordManager-Cpp
 Win32 based password manager written in C++.
+![Example Image 1](https://raw.githubusercontent.com/ninjaboynaru/PasswordManager-Cpp/master/images/_PassManager_Img_1.png "Password Manager Screen")
+![Example Image 2](https://raw.githubusercontent.com/ninjaboynaru/PasswordManager-Cpp/master/images/_PassManager_Img_2.png "Password Manager Console Screen")
 
 **DO NOT use this program to actually store passwords and sensitive information. It currently uses xor encryption and thus is not fit for actual data storage. Change the encryption method to something tested and secure if you plan to actually use this form something besides learning and testing**
 
