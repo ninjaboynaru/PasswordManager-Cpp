@@ -24,6 +24,7 @@ struct LoginField
         return SendMessage(password, WM_GETTEXTLENGTH, 0,0);
     }
 
+
     void GetLabelText(string* text)
     {
         int labelSize = GetLabelSize();
@@ -47,6 +48,7 @@ struct LoginField
 
         //+1 because GetWindowText() automaticly places a NULL char as the last char. pop_back() to remove that last NULL char
     }
+
 
 
     void Delete()
