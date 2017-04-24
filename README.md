@@ -1,7 +1,7 @@
 # PasswordManager-Cpp
 Win32 base password manager written in C++.  
 
-Download the **PassManager.exe** to see it in action. A data file is automatically created in the location of the .exe when the program is run.
+Download the **PassManager.exe** to see it in action. A data file is automatically created in the location of the **.exe** when the program is run.
 
 
 ![Example Image 1](https://raw.githubusercontent.com/ninjaboynaru/PasswordManager-Cpp/master/images/_PassManager_Img_1.png "Password Manager Screen")
@@ -14,6 +14,7 @@ Download the **PassManager.exe** to see it in action. A data file is automatical
   - Nothing complicated
   - Link with the ws2_32 library (Should come default on every windows computer).
   - Change your compliers search directories so it looks in every subfolder in the src folder
+  - If you forget the master password, delete the **Data.lfd** file located in the same directory as the **exe**. *This will delete all saved passwords and data)*
 
 
 # Features
